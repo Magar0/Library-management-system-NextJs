@@ -1,18 +1,52 @@
 import { db } from "@/database/drizzle";
 import { users } from "@/database/schema";
-import { sendEmail } from "@/lib/workflow";
+import config from "@/lib/config";
 import { serve } from "@upstash/workflow/nextjs";
 import { eq } from "drizzle-orm";
+import nodemailer from "nodemailer";
 
 type InitialData = {
   email: string;
   fullName: string;
 };
+type UserState = "non-active" | "active";
+
+const transporter = nodemailer.createTransport({
+  service: "Gmail",
+  port: 587,
+  auth: {
+    user: config.env.smtp.mail,
+    pass: config.env.smtp.password,
+  },
+});
+
+// sending email using nodemailer
+const sendEmail = async ({
+  email,
+  subject,
+  message,
+}: {
+  email: string;
+  subject: string;
+  message: string;
+}) => {
+  console.log("🟢🟢🟢email sending inside email");
+
+  const mailOption = {
+    from: process.env.SMTP_MAIL,
+    to: email,
+    subject: subject,
+    text: message,
+  };
+
+  await transporter.sendMail(mailOption);
+
+  return;
+};
 
 const ONE_DAY_IN_MS = 24 * 60 * 60 * 1000;
 
-type UserState = "non-active" | "active";
-
+//getting user state
 const getUserState = async (email: string): Promise<UserState> => {
   const user = await db
     .select()

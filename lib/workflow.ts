@@ -1,33 +1,40 @@
 import { Client as WorkflowClient } from "@upstash/workflow";
 import config from "./config";
-import emailjs from "@emailjs/browser";
+import nodemailer from "nodemailer";
 
 export const workFlowClient = new WorkflowClient({
   baseUrl: config.env.upstash.qstashUrl,
   token: config.env.upstash.qstashToken,
 });
 
-export const sendEmail = ({
-  fullName,
+const transporter = nodemailer.createTransport({
+  service: "smtp.gmail.com",
+  port: 587,
+  auth: {
+    user: config.env.smtp.mail,
+    pass: config.env.smtp.password,
+  },
+});
+
+export const sendEmail = async ({
   email,
   subject,
   message,
 }: {
-  fullName: string;
   email: string;
   subject: string;
   message: string;
 }) => {
-  const templateParams = {
-    full_name: fullName,
-    message,
-    email,
-    subject,
-  };
-  const templateId = "template_l5bm9jw";
   console.log("🟢🟢🟢email sending inside email");
-  emailjs.send(config.env.emailJs.serviceId, templateId, templateParams, {
-    publicKey: config.env.emailJs.publicKey,
-  });
+
+  const mailOption = {
+    from: process.env.SMTP_MAIL,
+    to: email,
+    subject: subject,
+    text: message,
+  };
+
+  await transporter.sendMail(mailOption);
+
   return;
 };

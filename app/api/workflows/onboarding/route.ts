@@ -43,7 +43,6 @@ export const { POST } = serve<InitialData>(async (context) => {
   await context.run("new-signup", async () => {
     console.log("🟢Email start");
     await sendEmail({
-      fullName,
       email,
       subject: "Welcom to the platform",
       message: `Welcome ${fullName}`,
@@ -61,7 +60,6 @@ export const { POST } = serve<InitialData>(async (context) => {
     if (state === "non-active") {
       await context.run("send-email-non-active", async () => {
         await sendEmail({
-          fullName,
           email,
           subject: "Are you still there?",
           message: `Hey ${fullName}, we miss you`,
@@ -70,7 +68,6 @@ export const { POST } = serve<InitialData>(async (context) => {
     } else if (state === "active") {
       await context.run("send-email-active", async () => {
         await sendEmail({
-          fullName,
           email,
           subject: "Welcom back!",
           message: `Welcome back ${fullName}!`,

@@ -25,6 +25,7 @@ export const sendEmail = ({
     subject,
   };
   const templateId = "template_l5bm9jw";
+  console.log("🟢🟢🟢email sending inside email");
   emailjs.send(config.env.emailJs.serviceId, templateId, templateParams, {
     publicKey: config.env.emailJs.publicKey,
   });

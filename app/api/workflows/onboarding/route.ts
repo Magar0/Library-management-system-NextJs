@@ -20,9 +20,10 @@ const getUserState = async (email: string): Promise<UserState> => {
     .where(eq(users.email, email))
     .limit(1);
   if (user.length === 0) return "non-active";
+
+  const lastActivityDate = new Date(user[0].lastActivityDate!);
   const now = new Date();
-  const timeDifference =
-    now.getTime() - new Date(user[0].lastActivityDate!).getTime();
+  const timeDifference = now.getTime() - lastActivityDate.getTime();
 
   if (
     timeDifference > 3 * ONE_DAY_IN_MS &&
@@ -36,8 +37,11 @@ const getUserState = async (email: string): Promise<UserState> => {
 export const { POST } = serve<InitialData>(async (context) => {
   const { email, fullName } = context.requestPayload;
 
+  console.log("🟢🟢Workflow start");
+
   //welcome email
   await context.run("new-signup", async () => {
+    console.log("🟢Email start");
     await sendEmail({
       fullName,
       email,
@@ -46,6 +50,7 @@ export const { POST } = serve<InitialData>(async (context) => {
     });
   });
 
+  console.log("🟢Sleep start");
   await context.sleep("wait-for-3-days", 60 * 60 * 24 * 3);
 
   while (true) {

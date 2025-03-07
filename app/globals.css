@@ -123,7 +123,7 @@
 
   /* File Upload */
   .progress {
-    @apply rounded-full bg-green-800 p-0.5 text-center font-bebas-neue text-[8px] font-bold leading-none text-light-100;
+    @apply rounded-full bg-green-800 p-0.5 text-center font-bebas-neue text-[10px] font-light leading-none text-light-100;
   }
 
   /* Search */

@@ -1,5 +1,5 @@
 interface Book {
-  id: number;
+  id: string;
   title: string;
   author: string;
   genre: string;
@@ -11,6 +11,7 @@ interface Book {
   coverUrl: string;
   videoUrl: string;
   summary: string;
+  createdAt: Date | null;
   isLoanedBook?: boolean;
 }
 
@@ -21,3 +22,17 @@ interface AuthCredentials {
   universityId: number;
   universityCard: string;
 }
+
+interface BookParams {
+  title: string;
+  author: string;
+  genre: string;
+  rating: number;
+  coverUrl: string;
+  coverColor: string;
+  description: string;
+  totalCopies: number;
+  videoUrl: string;
+  summary: string;
+}
+// type BookParams = Omit<Book, "id", "isLoanedBook", "availableCopies">;

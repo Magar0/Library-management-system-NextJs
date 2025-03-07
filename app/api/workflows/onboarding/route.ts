@@ -3,6 +3,7 @@ import { users } from "@/database/schema";
 import config from "@/lib/config";
 import { serve } from "@upstash/workflow/nextjs";
 import { eq } from "drizzle-orm";
+import { Html } from "next/document";
 import nodemailer from "nodemailer";
 
 type InitialData = {
@@ -37,6 +38,14 @@ const sendEmail = async ({
     to: email,
     subject: subject,
     text: message,
+    html: `
+    <p>Hello {{full_name}},</p>
+    <p style="padding: 12px; border-left: 4px solid #d0d0d0; font-style: italic;">
+      {{message}}
+    </p>
+    <p>
+    Best wishes,<br>BookHouse team
+    </p>`,
   };
 
   await transporter.sendMail(mailOption);

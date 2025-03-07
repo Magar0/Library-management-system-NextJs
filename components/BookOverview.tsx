@@ -13,6 +13,7 @@ const BookOverview = ({
   description,
   coverColor,
   coverUrl,
+  userId,
 }: Book) => {
   return (
     <section className="book-overview">

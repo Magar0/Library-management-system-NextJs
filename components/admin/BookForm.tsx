@@ -28,8 +28,7 @@ interface Props extends Partial<Book> {
 
 const BookForm = ({ type, ...book }: Props) => {
   const router = useRouter();
-  // const isSignIn = type === "SIGN_IN";
-
+  console.log({ type, ...book });
   const form = useForm<z.infer<typeof bookSchema>>({
     resolver: zodResolver(bookSchema),
     defaultValues: {

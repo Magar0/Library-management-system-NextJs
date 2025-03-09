@@ -36,6 +36,7 @@ const BorrowBtn = ({
         toast.error(result?.error);
       }
     } catch (error) {
+      console.log(error);
       toast.error("An error occured while borrowing the book");
     } finally {
       setBorrowing(false);

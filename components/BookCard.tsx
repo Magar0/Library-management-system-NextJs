@@ -6,8 +6,6 @@ import BookCover from "./BookCover";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { Button } from "./ui/button";
-import { IKImage } from "imagekitio-next";
-import config from "@/lib/config";
 import dayjs from "dayjs";
 
 const BookCard = ({

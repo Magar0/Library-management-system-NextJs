@@ -3,7 +3,6 @@ import { users } from "@/database/schema";
 import config from "@/lib/config";
 import { serve } from "@upstash/workflow/nextjs";
 import { eq } from "drizzle-orm";
-import { Html } from "next/document";
 import nodemailer from "nodemailer";
 
 type InitialData = {

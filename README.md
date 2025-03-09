@@ -1,7 +1,7 @@
 <div align="center">
   <br />
-      <img src="https://github.com/user-attachments/assets/bea83b26-b0d9-460e-adde-911dc952c3cc" height={200} width={100} alt="Project Banner">
-      <img src="https://github.com/user-attachments/assets/d15d6e9d-7488-41b3-a73e-4c090564fe52"  height={200}  width={100} alt="Project Banner">
+      <img src="https://github.com/user-attachments/assets/bea83b26-b0d9-460e-adde-911dc952c3cc" height="250"  alt="Project Banner">
+      <img src="https://github.com/user-attachments/assets/d15d6e9d-7488-41b3-a73e-4c090564fe52"  height="250" alt="Project Banner">
 
   <br />
 
@@ -149,6 +149,18 @@ SMTP_PASSWORD=
 ```
 
 Replace the placeholder values with your actual ImageKit, NeonDB, Upstash, and SMTP credentials. You can obtain these credentials by signing up on the ImageKit, NeonDB, Upstash. 
+
+
+**Database Setup**
+```bash
+npm run db:generate
+npm run db:migrate
+```
+
+**Seed the Database (Optional)**
+```bash
+npm run seed
+```
 
 **Running the Project**
 

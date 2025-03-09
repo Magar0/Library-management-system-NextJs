@@ -1,11 +1,8 @@
 <div align="center">
   <br />
-    <a href="https://github.com/user-attachments/assets/d15d6e9d-7488-41b3-a73e-4c090564fe52" height={100} width={100} target="_blank">
-      <img src="#" alt="Project Banner">
-    </a>
-    <a href="https://github.com/user-attachments/assets/d15d6e9d-7488-41b3-a73e-4c090564fe52" target="_blank">
-      <img src="#" alt="Project Banner">
-    </a>
+      <img src="https://github.com/user-attachments/assets/bea83b26-b0d9-460e-adde-911dc952c3cc" height={200} width={100} alt="Project Banner">
+      <img src="https://github.com/user-attachments/assets/d15d6e9d-7488-41b3-a73e-4c090564fe52"  height={200}  width={100} alt="Project Banner">
+
   <br />
 
   <div>

@@ -1,6 +1,9 @@
 <div align="center">
   <br />
-    <a href="https://youtu.be/EZajJGOMWas" target="_blank">
+    <a href="https://github.com/user-attachments/assets/d15d6e9d-7488-41b3-a73e-4c090564fe52" height={100} width={100} target="_blank">
+      <img src="#" alt="Project Banner">
+    </a>
+    <a href="https://github.com/user-attachments/assets/d15d6e9d-7488-41b3-a73e-4c090564fe52" target="_blank">
       <img src="#" alt="Project Banner">
     </a>
   <br />
@@ -15,9 +18,6 @@
 
   <h3 align="center">A University Library Management System with Admin Panel</h3>
 
-   <div align="center">
-     Build this project step by step with our detailed tutorial on <a href="https://www.youtube.com/@javascriptmastery/videos" target="_blank"><b>JavaScript Mastery</b></a> YouTube. Join the JSM family!
-    </div>
 </div>
 
 ## 📋 <a name="table">Table of Contents</a>

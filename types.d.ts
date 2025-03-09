@@ -13,6 +13,7 @@ interface Book {
   summary: string;
   createdAt: Date | null;
   isLoanedBook?: boolean;
+  dueDate?: string;
 }
 
 interface AuthCredentials {
@@ -36,3 +37,8 @@ interface BookParams {
   summary: string;
 }
 // type BookParams = Omit<Book, "id", "isLoanedBook", "availableCopies">;
+
+interface BorrowBookParams {
+  bookId: string;
+  userId: string;
+}

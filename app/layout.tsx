@@ -39,7 +39,7 @@ export default async function RootLayout({
           className={`${ibmPlexSans.className} ${bebasNeue.variable} antialiased`}
         >
           {children}
-          <Toaster />
+          <Toaster richColors />
         </body>
       </SessionProvider>
     </html>

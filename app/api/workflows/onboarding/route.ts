@@ -84,7 +84,6 @@ export const { POST } = serve<InitialData>(async (context) => {
 
   //welcome email
   await context.run("new-signup", async () => {
-    console.log("🟢Email start");
     await sendEmail({
       email,
       subject: "Welcom to the platform",
@@ -92,7 +91,6 @@ export const { POST } = serve<InitialData>(async (context) => {
     });
   });
 
-  console.log("🟢Sleep start");
   await context.sleep("wait-for-3-days", 60 * 60 * 24 * 3);
 
   while (true) {

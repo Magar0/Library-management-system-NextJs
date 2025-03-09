@@ -1,4 +1,3 @@
-"use client";
 import { auth } from "@/auth";
 import BookOverview from "@/components/BookOverview";
 import BookVideo from "@/components/BookVideo";
@@ -23,7 +22,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
   return (
     <>
-      <BookOverview {...bookDetails} userId={session?.user?.id} />
+      <BookOverview {...bookDetails} userId={session?.user?.id as string} />
       <div className="book-details">
         <div className="flex-[1.5]">
           <section className="flex flex-col gap-7">

@@ -23,6 +23,7 @@
 2. ⚙️ [Tech Stack](#tech-stack)
 3. 🔋 [Features](#features)
 4. 🤸 [Quick Start](#quick-start)
+5. 🎥 [Youtube](https://youtu.be/c5TzKkSxGw4)
 
 ## <a name="introduction">🤖 Introduction</a>
 
@@ -171,4 +172,11 @@ npm run dev
 Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
 
 ***Note
+
 To run Qstash workflow , you will need a domain url not localhost.
+You can use this dummy account to get admin privilege
+
+```bash
+email:admin@gmail.com
+password:12345678
+```

@@ -5,7 +5,7 @@ import BorrowBtn from "./BorrowBtn";
 import { db } from "@/database/drizzle";
 import { users } from "@/database/schema";
 import { eq } from "drizzle-orm";
-import { redirect } from "next/navigation";
+import Link from "next/link";
 
 interface Props extends Book {
   userId: string;
@@ -76,7 +76,7 @@ const BookOverview = async ({
         )}
       </div>
       <div className="relative flex flex-1 justify-center">
-        <div className="relative" onClick={() => redirect(`/books/${bookId}`)}>
+        <Link className="relative" href={`/books/${bookId}`}>
           <BookCover
             variant="wide"
             className="z-10"
@@ -90,7 +90,7 @@ const BookOverview = async ({
               coverImage={coverUrl}
             />
           </div>
-        </div>
+        </Link>
       </div>
     </section>
   );

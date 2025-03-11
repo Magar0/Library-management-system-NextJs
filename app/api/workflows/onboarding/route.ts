@@ -38,9 +38,9 @@ const sendEmail = async ({
     subject: subject,
     text: message,
     html: `
-    <p>Hello {{full_name}},</p>
+    <p>Hello,</p>
     <p style="padding: 12px; border-left: 4px solid #d0d0d0; font-style: italic;">
-      {{message}}
+      ${message}
     </p>
     <p>
     Best wishes,<br>BookHouse team

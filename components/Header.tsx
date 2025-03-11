@@ -27,8 +27,8 @@ const Header = ({ session }: { session: Session }) => {
             <HoverCardTrigger className="flex cursor-pointer items-center gap-2">
               <Avatar>
                 <AvatarImage src="https://github.com/shadcn.png" />
-                <AvatarFallback className="bg-blue-200 capitalize text-black">
-                  {session?.user?.name?.slice(0, 2) || "Av"}
+                <AvatarFallback className="bg-blue-200 uppercase text-black">
+                  {session?.user?.name?.slice(0, 2) || "AV"}
                 </AvatarFallback>
               </Avatar>
               <p className="hidden font-semibold text-white md:block">

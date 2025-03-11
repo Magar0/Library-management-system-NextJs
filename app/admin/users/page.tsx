@@ -1,7 +1,11 @@
-import React from "react";
+import CustomTable from "@/components/admin/CustomTable";
 
 const Page = () => {
-  return <div>All user table</div>;
+  return (
+    <section className="rounded-md bg-white p-5">
+      <CustomTable />
+    </section>
+  );
 };
 
 export default Page;

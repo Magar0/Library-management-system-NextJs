@@ -25,6 +25,7 @@ const BorrowBtn = ({
   const handleBorrow = async () => {
     if (!isEligible) {
       toast.error(message);
+      return;
     }
     setBorrowing(true);
     try {

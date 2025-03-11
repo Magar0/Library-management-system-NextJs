@@ -72,8 +72,8 @@ const Sidebar = ({ session }: { session: Session }) => {
 
       <div className="user">
         <Avatar>
-          <AvatarFallback className="bg-amber-100 uppercase">
-            {session?.user?.name?.slice(0, 1) || "NU"}
+          <AvatarFallback className="bg-amber-100 font-semibold uppercase text-slate-700">
+            {session?.user?.name?.slice(0, 2) || "AV"}
           </AvatarFallback>
         </Avatar>
 

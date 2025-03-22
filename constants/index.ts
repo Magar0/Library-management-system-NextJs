@@ -246,3 +246,5 @@ export const borrowStatuses = [
     textColor: "text-[#026AA2]",
   },
 ];
+
+export const PageSize = ["5", "10", "20"];

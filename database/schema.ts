@@ -52,7 +52,7 @@ export const books = pgTable("books", {
 export const borrowRecords = pgTable("borrow_records", {
   id: uuid("id").primaryKey().defaultRandom(),
   userId: uuid("user_id")
-    .references(() => users.id)
+    .references(() => users.id, { onDelete: "cascade" })
     .notNull(),
   bookId: uuid("book_id")
     .references(() => books.id)
@@ -65,3 +65,5 @@ export const borrowRecords = pgTable("borrow_records", {
   status: BORROW_STATUS_ENUM("status").default("BORROWED").notNull(),
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
 });
+
+export type User = typeof users.$inferSelect; // Infer the type for rows

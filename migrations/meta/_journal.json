@@ -15,6 +15,13 @@
       "when": 1741364683018,
       "tag": "0001_absent_daimon_hellstrom",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1742633255207,
+      "tag": "0002_sparkling_the_hood",
+      "breakpoints": true
     }
   ]
 }

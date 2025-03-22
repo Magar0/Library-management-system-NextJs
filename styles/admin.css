@@ -167,4 +167,8 @@
   .user-card .email {
     @apply line-clamp-1 w-full break-words text-sm text-light-500;
   }
+
+  .my-table th {
+    @apply text-center;
+  }
 }

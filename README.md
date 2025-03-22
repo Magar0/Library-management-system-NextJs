@@ -23,10 +23,14 @@
 2. ⚙️ [Tech Stack](#tech-stack)
 3. 🔋 [Features](#features)
 4. 🤸 [Quick Start](#quick-start)
+5. 🎥 [Youtube](https://youtu.be/c5TzKkSxGw4)
+6. 🟢 [Live Page](https://book-house-next-js.vercel.app/)
 
 ## <a name="introduction">🤖 Introduction</a>
 
 Built with Next.js, TypeScript, and Postgres, the University Library Management System is a production-grade platform featuring a public-facing app and an admin interface. It offers advanced functionalities like seamless book borrowing with reminders and receipts, robust user management, automated workflows, and a modern, optimized tech stack for real-world scalability.
+
+Clicke [here](https://youtu.be/c5TzKkSxGw4) to watch a short youtube video of my project
 
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
@@ -171,4 +175,11 @@ npm run dev
 Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
 
 ***Note
+
 To run Qstash workflow , you will need a domain url not localhost.
+You can use this dummy account to get admin privilege
+
+```bash
+email:admin@gmail.com
+password:12345678
+```

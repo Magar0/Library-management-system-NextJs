@@ -189,7 +189,7 @@ const Page = () => {
                   <TableCell className="text-right">
                     <DeleteDialog
                       userId={user.id}
-                      handleDeleteUser={handleDeleteUser}
+                      handleDeleteItem={handleDeleteUser}
                     />
                   </TableCell>
                 </TableRow>

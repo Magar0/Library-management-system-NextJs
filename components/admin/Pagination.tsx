@@ -54,7 +54,7 @@ const Pagination = ({
   };
 
   return (
-    <section className="flex w-full items-center justify-between gap-3">
+    <section className="mt-5 flex w-full items-center justify-between gap-3">
       <div className="relative pl-20">
         <Select
           defaultValue={pageSize.toString()}

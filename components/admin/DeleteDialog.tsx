@@ -14,10 +14,10 @@ import { Trash } from "lucide-react";
 
 const DeleteDialog = ({
   userId,
-  handleDeleteUser,
+  handleDeleteItem,
 }: {
   userId: string;
-  handleDeleteUser: (userId: string) => Promise<void>;
+  handleDeleteItem: (userId: string) => Promise<void>;
 }) => {
   const [loading, setLoading] = useState(false);
 
@@ -25,7 +25,7 @@ const DeleteDialog = ({
 
   const handleDelete = async () => {
     setLoading(true);
-    await handleDeleteUser(userId);
+    await handleDeleteItem(userId);
     setLoading(false);
     setIsDialogOpen(false);
   };

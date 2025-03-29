@@ -1,9 +1,15 @@
 "use server";
 
 import { db } from "@/database/drizzle";
-import { books, borrowRecords } from "@/database/schema";
-import { and, eq } from "drizzle-orm";
+import { books, borrowRecords, users } from "@/database/schema";
+import { and, eq, sql } from "drizzle-orm";
 import dayjs from "dayjs";
+
+interface RecordParams {
+  pageNo: number;
+  pageSize: number;
+  sort: string;
+}
 
 export const borrowBook = async (params: BorrowBookParams) => {
   const { userId, bookId } = params;
@@ -63,6 +69,75 @@ export const borrowBook = async (params: BorrowBookParams) => {
     return {
       success: false,
       error: "An Error occured while borrowing",
+    };
+  }
+};
+
+export const getBorrowRecords = async (Params: RecordParams) => {
+  try {
+    const response = await db
+      .select({
+        id: borrowRecords.id,
+        userId: borrowRecords.userId,
+        bookId: borrowRecords.bookId,
+        borrowDate: borrowRecords.borrowDate,
+        dueDate: borrowRecords.dueDate,
+        returnDate: borrowRecords.returnDate,
+        status: borrowRecords.status,
+        userName: users.fullName,
+        bookTitle: books.title,
+        totalCount: sql<number>`count(*) over()`,
+      })
+      .from(borrowRecords)
+      .leftJoin(users, eq(borrowRecords.userId, users.id))
+      .leftJoin(books, eq(borrowRecords.bookId, books.id))
+      .limit(Params.pageSize)
+      .offset((Params.pageNo - 1) * Params.pageSize);
+
+    // if there are no record
+    if (!response.length) {
+      return {
+        success: false,
+        error: "You have already borrowed this book.",
+      };
+    }
+    return {
+      success: true,
+      data: JSON.parse(JSON.stringify(response)),
+    };
+  } catch (err) {
+    return {
+      success: false,
+      error: err,
+    };
+  }
+};
+
+export const handleReturned = async (recordId: string, value: boolean) => {
+  try {
+    const returnDate = value ? new Date().toISOString().split("T")[0] : null;
+    const status = value ? "RETURNED" : "BORROWED";
+
+    const response = await db
+      .update(borrowRecords)
+      .set({ returnDate, status })
+      .where(eq(borrowRecords.id, recordId))
+      .returning();
+    console.log({ response });
+    if (!response) {
+      return {
+        success: false,
+        error: "Error updating",
+      };
+    }
+    return {
+      success: true,
+      data: JSON.parse(JSON.stringify(response)),
+    };
+  } catch (err) {
+    return {
+      success: false,
+      error: err,
     };
   }
 };

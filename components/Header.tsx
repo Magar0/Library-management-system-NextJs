@@ -23,6 +23,11 @@ const Header = ({ session }: { session: Session }) => {
       </Link>
       <ul className="flex items-center gap-3 md:gap-10">
         <li>
+          <Link href={"/library"} className="font-semibold text-white">
+            Library
+          </Link>
+        </li>
+        <li>
           <Popover>
             <PopoverTrigger className="flex cursor-pointer items-center gap-2">
               <Avatar>

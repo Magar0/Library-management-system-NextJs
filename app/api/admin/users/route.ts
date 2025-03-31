@@ -1,6 +1,6 @@
 import { db } from "@/database/drizzle";
 import { borrowRecords, users } from "@/database/schema";
-import { and, asc, desc, eq, sql } from "drizzle-orm";
+import { and, desc, eq, sql } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
 
 // Define the response type
@@ -53,11 +53,6 @@ export async function GET(req: NextRequest) {
       .offset((pageNo - 1) * pageSize)
       .orderBy(sorting);
 
-    console.log({
-      sort,
-      test: sorting.getSQL(),
-      usersData: usersData.map((e) => e.fullName),
-    });
     // fetch no of books borrowed for each user
     const usersWithBorrowedBooks = await Promise.all(
       usersData.map(async (user) => {

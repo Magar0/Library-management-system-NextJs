@@ -3,13 +3,13 @@ import Link from "next/link";
 import React from "react";
 import { Session } from "next-auth";
 
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card";
+import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "./ui/button";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { signOut } from "@/auth";
 
 const Header = ({ session }: { session: Session }) => {
@@ -23,8 +23,8 @@ const Header = ({ session }: { session: Session }) => {
       </Link>
       <ul className="flex items-center gap-3 md:gap-10">
         <li>
-          <HoverCard>
-            <HoverCardTrigger className="flex cursor-pointer items-center gap-2">
+          <Popover>
+            <PopoverTrigger className="flex cursor-pointer items-center gap-2">
               <Avatar>
                 <AvatarImage src="https://github.com/shadcn.png" />
                 <AvatarFallback className="bg-blue-200 uppercase text-black">
@@ -34,8 +34,8 @@ const Header = ({ session }: { session: Session }) => {
               <p className="hidden font-semibold text-white md:block">
                 {session?.user?.name || "User"}
               </p>
-            </HoverCardTrigger>
-            <HoverCardContent className="flex w-fit flex-col gap-1 bg-transparent">
+            </PopoverTrigger>
+            <PopoverContent className="flex w-fit flex-col gap-1 bg-transparent">
               <Link
                 href={"/my-profile"}
                 className="relative flex w-full items-center justify-start gap-2 rounded-md px-5 py-3 text-white transition-all duration-300 hover:bg-accent hover:text-slate-800 hover:shadow-sm"
@@ -66,8 +66,8 @@ const Header = ({ session }: { session: Session }) => {
                 />
                 <p className="font-medium">Logout</p>
               </Button>
-            </HoverCardContent>
-          </HoverCard>
+            </PopoverContent>
+          </Popover>
         </li>
       </ul>
     </header>

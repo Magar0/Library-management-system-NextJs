@@ -169,6 +169,6 @@
   }
 
   .my-table th {
-    @apply text-center;
+    /* @apply text-center; */
   }
 }

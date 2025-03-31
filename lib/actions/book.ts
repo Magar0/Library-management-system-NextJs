@@ -2,7 +2,7 @@
 
 import { db } from "@/database/drizzle";
 import { books, borrowRecords, users } from "@/database/schema";
-import { and, eq, sql } from "drizzle-orm";
+import { and, desc, eq, sql } from "drizzle-orm";
 import dayjs from "dayjs";
 
 interface RecordParams {
@@ -75,6 +75,14 @@ export const borrowBook = async (params: BorrowBookParams) => {
 
 export const getBorrowRecords = async (Params: RecordParams) => {
   try {
+    const sorting =
+      Params.sort === "name=asc"
+        ? users.fullName
+        : Params.sort === "name=desc"
+          ? desc(users.fullName)
+          : desc(users.createdAt);
+
+    // joining multiple tables based on userId and bookId
     const response = await db
       .select({
         id: borrowRecords.id,
@@ -92,7 +100,8 @@ export const getBorrowRecords = async (Params: RecordParams) => {
       .leftJoin(users, eq(borrowRecords.userId, users.id))
       .leftJoin(books, eq(borrowRecords.bookId, books.id))
       .limit(Params.pageSize)
-      .offset((Params.pageNo - 1) * Params.pageSize);
+      .offset((Params.pageNo - 1) * Params.pageSize)
+      .orderBy(sorting);
 
     // if there are no record
     if (!response.length) {
@@ -115,6 +124,7 @@ export const getBorrowRecords = async (Params: RecordParams) => {
 
 export const handleReturned = async (recordId: string, value: boolean) => {
   try {
+    // updating value
     const returnDate = value ? new Date().toISOString().split("T")[0] : null;
     const status = value ? "RETURNED" : "BORROWED";
 
@@ -123,7 +133,6 @@ export const handleReturned = async (recordId: string, value: boolean) => {
       .set({ returnDate, status })
       .where(eq(borrowRecords.id, recordId))
       .returning();
-    console.log({ response });
     if (!response) {
       return {
         success: false,

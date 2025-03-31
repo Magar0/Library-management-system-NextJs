@@ -123,6 +123,11 @@ const Page = () => {
             </TableRow>
           </TableHeader>
           <TableBody className="min-h-0 flex-grow font-semibold text-neutral-800">
+            {!borrowRecords?.length && borrowRecords && (
+              <p className="absolute mt-3 w-full italic text-neutral-400">
+                No Pending request{" "}
+              </p>
+            )}
             {borrowRecords?.map((records) => {
               return (
                 <TableRow key={records.id}>

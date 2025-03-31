@@ -28,7 +28,7 @@ const Page = () => {
   const [allUser, setAllUser] = useState<IUser[] | null>(null);
   const [pageSize, setPageSize] = useState<number>(10);
   const [pageNo, setPageNo] = useState<number>(1);
-  const [sort, setSort] = useState<"asc" | "desc">("asc");
+  const [sort, setSort] = useState<string>("");
   const [totalPages, setTotalPages] = useState<number>(0);
 
   // fetch all users
@@ -109,7 +109,9 @@ const Page = () => {
           All Users
         </h3>
         <div
-          onClick={() => setSort((pre) => (pre === "asc" ? "desc" : "asc"))}
+          onClick={() =>
+            setSort((pre) => (pre === "name=asc" ? "name=desc" : "name=asc"))
+          }
           className="flex cursor-pointer items-center gap-1"
         >
           <p>A-Z</p>
@@ -141,6 +143,11 @@ const Page = () => {
             </TableRow>
           </TableHeader>
           <TableBody className="min-h-0 flex-grow font-semibold text-neutral-800">
+            {!allUser?.length && allUser && (
+              <p className="absolute w-full italic text-neutral-400">
+                No Pending request
+              </p>
+            )}
             {allUser?.map((user) => {
               console.log(user);
               return (
@@ -172,12 +179,8 @@ const Page = () => {
                       handleRoleChange={handleRoleChange}
                     />
                   </TableCell>
-                  <TableCell className="text-center">
-                    {user.borrowedBooksCount}
-                  </TableCell>
-                  <TableCell className="text-center">
-                    {user.universityId}
-                  </TableCell>
+                  <TableCell>{user.borrowedBooksCount}</TableCell>
+                  <TableCell>{user.universityId}</TableCell>
                   <TableCell>
                     <Link
                       className="flex items-center gap-1 text-blue-500"
@@ -186,7 +189,7 @@ const Page = () => {
                       View ID Card <SquareArrowOutUpRight size={15} />
                     </Link>
                   </TableCell>
-                  <TableCell className="text-right">
+                  <TableCell className="text-center">
                     <DeleteDialog
                       userId={user.id}
                       handleDeleteItem={handleDeleteUser}

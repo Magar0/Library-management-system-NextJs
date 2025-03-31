@@ -77,9 +77,9 @@ export const getBooks = async ({
 }) => {
   try {
     const sorting =
-      sort === "name=Asc"
+      sort === "name=asc"
         ? books.title
-        : sort === "name=Desc"
+        : sort === "name=desc"
           ? desc(books.title)
           : desc(books.createdAt);
 

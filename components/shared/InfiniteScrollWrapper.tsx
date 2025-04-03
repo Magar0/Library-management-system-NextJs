@@ -55,7 +55,7 @@ const InfiniteScrollWrapper = ({
     return () => window.removeEventListener("scroll", handleScroll);
   }, [loading, page, totalBooks, books.length, router, fetchMoreBooks]);
 
-  console.log({ len: books.length, totalBooks });
+  // console.log({ len: books.length, totalBooks });
   //   console.log({ page, loading, books: books.map((e) => e.title) });
 
   return (

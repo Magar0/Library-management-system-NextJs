@@ -9,7 +9,7 @@ const page = () => (
   <AuthForm
     type="SIGN_IN"
     schema={signInSchema}
-    defaultValues={{ email: "", password: "" }}
+    defaultValues={{ email: "admin@gmail.com", password: "12345678" }}
     onSubmit={signInWithCredentials}
   />
 );

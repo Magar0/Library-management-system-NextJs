@@ -13,7 +13,7 @@ const Page = async () => {
   const session = await auth();
   if (!session?.user?.id) return null;
   //   const page = Number((await searchParams)?.page) || 1;
-  const limit = 6;
+  const limit = 20;
 
   const allBooks = (await db
     .select({

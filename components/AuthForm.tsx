@@ -26,6 +26,8 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { FIELD_NAMES, FIELD_TYPES } from "@/constants";
 import FileUpload from "./FileUpload";
+import { useState } from "react";
+import Loader from "./shared/Loader";
 
 interface Props<T extends FieldValues> {
   schema: ZodType<T>;
@@ -41,6 +43,7 @@ const AuthForm = <T extends FieldValues>({
   onSubmit,
 }: Props<T>) => {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
   const isSignIn = type === "SIGN_IN";
 
   const form: UseFormReturn<T> = useForm({
@@ -49,6 +52,7 @@ const AuthForm = <T extends FieldValues>({
   });
 
   const handleSubmit: SubmitHandler<T> = async (data) => {
+    setLoading(true);
     const result = await onSubmit(data);
 
     if (result.success) {
@@ -61,10 +65,11 @@ const AuthForm = <T extends FieldValues>({
     } else {
       toast.error(result.error ?? "An error occured");
     }
+    setLoading(false);
   };
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-3">
       <h1 className="text-2xl font-semibold text-white">
         {isSignIn ? "Welcome Back to BookHouse" : "Creat an account"}
       </h1>
@@ -73,6 +78,7 @@ const AuthForm = <T extends FieldValues>({
           ? "Access the vast collection of resources, and stay updated"
           : "Please complete all fields and upload a valid university ID to gain access to the library"}
       </p>
+
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(handleSubmit)}
@@ -118,11 +124,13 @@ const AuthForm = <T extends FieldValues>({
             />
           ))}
 
-          <Button type="submit" className="form-btn">
+          <Button type="submit" disabled={loading} className="form-btn">
             {isSignIn ? "Sign In" : "Sign Up"}
+            {loading && <Loader />}
           </Button>
         </form>
       </Form>
+
       <p className="text base text-center font-medium">
         {isSignIn ? "New to BookHouse? " : "Already have an account? "}
         <Link
@@ -132,6 +140,12 @@ const AuthForm = <T extends FieldValues>({
           {isSignIn ? "Create an account" : "Sign In"}
         </Link>
       </p>
+      {isSignIn && (
+        <p className="my-0 text-xs italic text-green-200">
+          <span className="font-bold">*Note:</span> You can use the default
+          credentials for admin access
+        </p>
+      )}
     </div>
   );
 };

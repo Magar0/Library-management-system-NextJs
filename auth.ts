@@ -15,7 +15,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         if (!credentials?.email || !credentials?.password) {
           return null;
         }
-
         const user = await db
           .select()
           .from(users)
@@ -30,11 +29,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         );
 
         if (!isPasswordValid) return null;
-
         return {
           id: user[0].id.toString(),
           email: user[0].email,
           name: user[0].fullName,
+          role: user[0].role,
         } as User;
       },
     }),
@@ -47,14 +46,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (user) {
         token.id = user.id;
         token.name = user.name;
+        token.role = user.role;
       }
-
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
         session.user.id = token.id as string;
         session.user.name = token.name as string;
+        session.user.role = token.role as string;
       }
 
       return session;

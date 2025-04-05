@@ -22,13 +22,13 @@ const Header = ({ session }: { session: Session }) => {
         </p>
       </Link>
       <ul className="flex items-center gap-3 md:gap-10">
-        {/* {session?.user?.role === "ADMIN" && ( */}
-        <li>
-          <Link href={"/admin"} className="font-semibold text-white">
-            Admin
-          </Link>
-        </li>
-        {/* )} */}
+        {session?.user?.role === "ADMIN" && (
+          <li>
+            <Link href={"/admin"} className="font-semibold text-white">
+              Admin
+            </Link>
+          </li>
+        )}
         <li>
           <Link href={"/library"} className="font-semibold text-white">
             Library

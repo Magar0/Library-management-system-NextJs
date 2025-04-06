@@ -32,7 +32,13 @@ const page = async () => {
     .where(eq(borrowRecords.userId, session?.user?.id as string))
     .innerJoin(books, eq(borrowRecords.bookId, books.id));
 
-  return <BookList title="Borrowed Books" books={borrowedBooks} />;
+  return (
+    <BookList
+      title="Borrowed Books"
+      books={borrowedBooks}
+      username={session.user.name}
+    />
+  );
 };
 
 export default page;

@@ -6,9 +6,10 @@ interface Props {
   title: string;
   books: Book[];
   containerClassName?: string;
+  username?: string;
 }
 
-const BookList = ({ title, books, containerClassName }: Props) => {
+const BookList = ({ title, books, containerClassName, username }: Props) => {
   return (
     <section className={containerClassName}>
       <h2 className="font-bebas-neue text-4xl text-light-100">{title}</h2>
@@ -17,7 +18,7 @@ const BookList = ({ title, books, containerClassName }: Props) => {
           <p className="text-xl text-white">No Books to show</p>
         )}
         {books.map((book, ind) => (
-          <BookCard key={ind} {...book} />
+          <BookCard key={ind} {...book} username={username} />
         ))}
       </ul>
     </section>

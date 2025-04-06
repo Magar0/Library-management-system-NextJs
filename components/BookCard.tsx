@@ -7,7 +7,12 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import dayjs from "dayjs";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import InvoiceDocument from "./InvoiceDocument";
 
+interface Props extends Book {
+  username?: string;
+}
 const BookCard = ({
   id,
   title,
@@ -16,7 +21,8 @@ const BookCard = ({
   coverUrl,
   isLoanedBook = false,
   dueDate,
-}: Book) => {
+  username,
+}: Props) => {
   const remainingDays = dueDate ? dayjs(dueDate).diff(dayjs(), "day") : null;
 
   return (
@@ -33,7 +39,7 @@ const BookCard = ({
       </Link>
       {isLoanedBook && (
         <div className="mt-3 w-full">
-          <div className="book-loaned">
+          <div className="book-loaned mb-3">
             <Image
               src="/icons/calendar.svg"
               alt="calendar"
@@ -46,12 +52,22 @@ const BookCard = ({
               {remainingDays} days left to return
             </p>
           </div>
-          <Button
-            className="mt-3 min-h-14 w-full bg-dark-600 font-bebas-neue text-base text-white"
-            onClick={() => "Receipt download clicked"}
+          <PDFDownloadLink
+            document={
+              <InvoiceDocument
+                title={title}
+                dueDate={dueDate || ""}
+                username={username || ""}
+              />
+            }
+            className="min-h-14 w-full cursor-pointer rounded-md bg-dark-600 px-3 py-2 font-bebas-neue text-base text-white"
+            // onClick={() => "Receipt download clicked"}
+            fileName="receipt.pdf"
           >
-            Download receipt
-          </Button>
+            {({ loading }) =>
+              loading ? "Loading document..." : "Download Receipt"
+            }
+          </PDFDownloadLink>
         </div>
       )}
     </li>

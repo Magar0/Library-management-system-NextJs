@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
 import BookList from "../BookList";
 
@@ -17,7 +17,7 @@ const InfiniteScrollWrapper = ({
   const [books, setBooks] = useState<Book[]>(initialBooks);
   const [page, setPage] = useState<number>(1);
   const [loading, setLoading] = useState(false);
-  const fetchMoreBooks = async () => {
+  const fetchMoreBooks = useCallback(async () => {
     setLoading(true);
     try {
       const data = await fetch(
@@ -33,7 +33,7 @@ const InfiniteScrollWrapper = ({
     } finally {
       setLoading(false);
     }
-  };
+  }, [page, limit]);
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition =

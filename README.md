@@ -42,6 +42,7 @@ Clicke [here](https://youtu.be/c5TzKkSxGw4) to watch a short youtube video of my
 - TypeScript
 - Nodemailer
 - Tailwind CSS
+- Redux Toolkit
 
 ## <a name="features">🔋 Features</a>
 

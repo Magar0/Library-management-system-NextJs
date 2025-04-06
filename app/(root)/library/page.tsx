@@ -13,7 +13,7 @@ const Page = async () => {
   const session = await auth();
   if (!session?.user?.id) return null;
   //   const page = Number((await searchParams)?.page) || 1;
-  const limit = 20;
+  const limit = 12;
 
   const allBooks = (await db
     .select({
@@ -22,7 +22,7 @@ const Page = async () => {
       author: books.author,
       genre: books.genre,
       rating: books.rating,
-      coverUrl: books.coverColor,
+      coverUrl: books.coverUrl,
       coverColor: books.coverColor,
       description: books.description,
       totalCopies: books.totalCopies,
@@ -33,9 +33,8 @@ const Page = async () => {
       total: sql<number>`COUNT (*) OVER()`,
     })
     .from(books)
-    .limit(limit)
+    .limit(20)
     .orderBy(desc(books.createdAt))) as IBook[];
-
   return (
     <InfiniteScrollWrapper
       totalBooks={allBooks[0]?.total || 0}

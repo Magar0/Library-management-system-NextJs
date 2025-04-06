@@ -17,7 +17,6 @@ const InfiniteScrollWrapper = ({
   const [books, setBooks] = useState<Book[]>(initialBooks);
   const [page, setPage] = useState<number>(1);
   const [loading, setLoading] = useState(false);
-
   const fetchMoreBooks = async () => {
     setLoading(true);
     try {
@@ -61,7 +60,11 @@ const InfiniteScrollWrapper = ({
   return (
     <>
       <BookList title="Library" books={books} containerClassName="mt-28" />
-      {loading && <p className="text-center">Loading more books...</p>}
+      {loading && (
+        <div className="grid h-20 w-screen place-items-center py-10">
+          <div className="loader-small"></div>
+        </div>
+      )}
     </>
   );
 };

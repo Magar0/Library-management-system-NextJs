@@ -33,69 +33,47 @@ Built with Next.js, TypeScript, and Postgres, the University Library Management 
 Clicke [here](https://youtu.be/c5TzKkSxGw4) to watch a short youtube video of my project
 
 
-## <a name="tech-stack">⚙️ Tech Stack</a>
+## <a name="tech-stack"> 💻 Tech Stack </a>
 
-- Next.js
-- PostgreSQL
-- Upstash
-- ImageKit
-- TypeScript
-- Nodemailer
-- Tailwind CSS
-- Redux Toolkit
+👉 Frontend: Next.js (TypeScript), TailwindCSS, ShadCN, Framer Motion, ImageKit, Redux Toolkit.
+
+👉 Backend: Next.js API Routes, Drizzle ORM (type-safe queries), PostgresSql, Upstash.
+
+👉 Email Handling: Nodemailer for transactional emails.
 
 ## <a name="features">🔋 Features</a>
 
-### Features of the University Library Management System Project
+### 🔐 Authentication & Security
+- **Open-source Authentication**: Personalized onboarding flow with email notifications (NextAuth.js)
+- **Role-Based Access Control**: Admins approve/reject users and assign roles (User/Admin)
+- **DDoS Protection & Rate-Limiting**: Secure API endpoints against abuse
 
-👉 **Open-source Authentication**: Personalized onboarding flow with email notifications.  
+### 📚 Book Management
+- **Home Page**: Highlighted books and newly added books with 3D effects
+- **Book Detail Pages**: Availability tracking, summaries, videos, and similar book suggestions
+- **Admin Book CRUD**: Add, edit, or delete books with pagination support
+- **Infinite Scrolling and Pagination**: Smooth browsing for large book catalogs
 
-👉 **Home Page**: Highlighted books and newly added books with 3D effects.  
+### 👤 User Features
+- **Profile Page**: Manage accounts, track borrowed books, and download receipts
+- **Borrowing System**: Request/return books with due-date reminders
+- **Borrowing History**: View past transactions and receipts
 
-<!--👉 **Library Page**: Advanced filtering, search, and pagination for book discovery.   -->
+### 🤖 Automation & Workflows
+- **Onboarding Workflows**: Automated welcome emails (Nodemailer) + inactivity follow-ups
 
-👉 **Book Detail Pages**: Availability tracking, book summaries, videos, and suggestions for similar books.  
+### ⚡ Performance & Scalability
+- **Database Management**: PostgreSQL with Neon for serverless scalability
+- **Efficient Caching**: Upstash Redis for fast data retrieval and triggers
+- **Real-time Media Processing**: ImageKit for optimized book covers/videos
 
-👉 **Profile Page**: Manage accounts, track borrowed books, and download receipts.  
-
-👉 **Onboarding Workflows**: Automated welcome emails when users sign up, with follow-ups based on inactivity or activity dates.  
-
-<!--👉 **Borrow Book Reminder**: Customized email notifications sent before, on, and after the due date, reminding users to return books or avoid charges.-->
-
-<!--👉 **Borrow Book Receipt**: Automatically generates a customized PDF receipt when a book is successfully borrowed.  -->
-
-<!-- 👉 **Analytics Dashboard**: Statistics, new users, books, borrow requests, and more.  -->
-
-<!-- 👉 **All Users Page**: View and manage users, including approving or revoking access.  -->
-
-<!-- 👉 **Account Requests Page**: Admin approval for account requests, with email notifications for user verification.  -->
-
-<!-- 👉 **All Books Page**: List and manage all library books with advanced search, pagination, and filters. -->
-
-👉 **Book Management Forms**: Add new books and edit existing entries.  
-
-<!-- 👉 **Book Details Page**: Detailed book information for administrators.  -->
-
-<!-- 👉 **Borrow Records Page**: Complete borrow history with pagination and search.  -->
-
-<!-- 👉 **Role Management**: Change user roles to manage access to admin portal. -->
-
-👉 **Advanced Functionalities**: Caching, rate-limiting, DDoS protection, and custom notifications.  
-
-👉 **Database Management**: Postgres with Neon for scalable and collaborative database handling.  
-
-👉 **Real-time Media Processing**: ImageKit for image and video optimization and transformations. 
-
-👉 **Efficient Caching**: Upstash Redis for caching, workflows, and triggers.  
-
-👉 **Database ORM**: Drizzle ORM for simplified and efficient database interactions.  
-
-👉 **Modern UI/UX**: Built with TailwindCSS, ShadCN, and other cutting-edge tools.  
-
-👉 **Technology Stack**: Next.js with TypeScript for scalable development, and NextAuth for robust authentication.  
-
-👉 **Email Handling**: Nodemailer is used for sending emails.  
-
+### 🛠️ Advanced Features
+- **Admin Dashboard**:
+  - Approve/reject users
+  - Manage all books, users, and borrowing records
+  - Role switching (promote/demote users)
+- **Code Architecture**: Modular, reusable components with TypeScript
+- **PDF Receipt Generation**: Automatic receipts for borrowed books
 and many more, including code architecture and reusability 
 
 ## <a name="quick-start">🤸 Quick Start</a>

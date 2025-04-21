@@ -23,7 +23,7 @@
 2. ⚙️ [Tech Stack](#tech-stack)
 3. 🔋 [Features](#features)
 4. 🤸 [Quick Start](#quick-start)
-5. 🎥 [Youtube](https://youtu.be/c5TzKkSxGw4)
+5. 🎥 [Youtube](https://youtu.be/E4aeyqxKvVw)
 6. 🟢 [Live Page](https://book-house-next-js.vercel.app/)
 
 ## <a name="introduction">🤖 Introduction</a>
